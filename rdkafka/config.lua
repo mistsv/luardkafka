@@ -93,7 +93,7 @@ function KafkaConfig:set_delivery_cb(callback)
                 if err ~= librdkafka.RD_KAFKA_RESP_ERR_NO_ERROR then
                     errstr = ffi.string(librdkafka.rd_kafka_err2str(err))
                 end
-                callback(ffi.string(payload, len), errstr)
+                callback(ffi.string(payload, tonumber(len)), errstr)
             end)
     end
 end
